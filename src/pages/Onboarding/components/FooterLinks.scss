@@ -1,0 +1,42 @@
+@use '../../../styles/variables' as *;
+
+.onboarding__footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #f3f4f6;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 2rem;
+
+  @include mobile {
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 90%;
+    margin: 0 auto 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .copyright {
+    font-family: $font-main; 
+    font-weight: 500;
+    font-size: 14px;
+    color: #71717a; 
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    color: #1e88e5;
+    font-family: $font-main;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

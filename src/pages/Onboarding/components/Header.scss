@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+
+.onboarding__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  width: 100%;
+
+  &--auth {
+    justify-content: center;
+    margin-bottom: 0; 
+  }
+
+  @include mobile {
+    padding: 0 1.5rem 0.5rem;
+    margin-bottom: 4rem; 
+    position: relative; 
+    flex-direction: column-reverse; 
+    align-items: center;
+    gap: 1.5rem; 
+
+    .onboarding__signin-btn {
+      align-self: flex-end; 
+    }
+
+    .onboarding__logo {
+      margin: 0;
+    }
+
+    &.onboarding__header--auth {
+      padding-top: 2rem;
+      margin-bottom: 0;
+      flex-direction: row; 
+      justify-content: center; 
+    }
+  }
+
+  .onboarding__logo {
+    font-family: $font-logo;
+    color: #ff7a18;
+    font-size: 40.81px;
+    font-weight: 400;
+    line-height: 40.81px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .onboarding__signin-btn {
+    padding: 0.6rem 2rem;
+    border: 1.5px solid #1e88e5;
+    color: #1e88e5;
+    border-radius: 8px; 
+    font-family: $font-main;
+    font-weight: 500;
+    font-size: 14px; 
+    line-height: 20px;
+    transition: all 0.2s ease;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile {
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    &:hover {
+      background-color: #f0f7ff;
+      border-color: #1565c0;
+    }
+  }
+}

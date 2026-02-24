@@ -1,4 +1,5 @@
 ﻿import Copyright from '../../../components/common/Copyright';
+import './FooterLinks.scss';
 
 const FooterLinks: React.FC = () => {
     return (

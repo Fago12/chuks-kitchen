@@ -1,0 +1,51 @@
+// Color Palette
+$primary-orange: #FF7A18;
+$soft-orange: #FFB066;
+$light-orange: #FFE1C4;
+$dark-orange: #C95400;
+
+$primary-pink: #FF4F9A;
+$soft-pink: #FF9AC7;
+$light-pink: #FFE1EE;
+$dark-pink: #B0005A;
+
+$primary-blue: #1E88E5;
+$soft-blue: #64B5F6;
+$light-blue: #E3F2FD;
+$dark-blue: #0D47A1;
+
+$pure-white: #FFFFFF;
+$soft-gray: #F3F4F6;
+$charcoal-black: #1F2937;
+$dark-gray-text: #4B5563;
+$muted-gray-text: #9CA3AF;
+
+// Typography
+$font-main: 'Inter', sans-serif;
+$font-heading: 'Outfit', sans-serif;
+$font-logo: 'Island Moments', cursive; // Matches Figma specs
+$font-jost: 'Jost', sans-serif;
+$font-poppins: 'Poppins', sans-serif;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+
+@mixin mobile {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}

@@ -12,225 +12,276 @@
     @include mobile {
       flex-direction: column;
     }
-  }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 15%; // Favor the top slightly to keep heads in view
+    .onboarding__hero-desktop {
+      width: 40%;
+      
+      @include mobile {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 15%; 
+      }
     }
 
-  &__content {
-    width: 50%;
-    padding: 2rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    @include mobile {
-      width: 100%;
-      padding: 1.5rem;
-    }
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-
-    @include mobile {
-      margin-bottom: 2rem;
-    }
-  }
-
-  &__logo {
-    font-family: $font-logo;
-    color: #ff7a18;
-    font-size: 40.81px;
-    font-weight: 400;
-    line-height: 40.81px;
-  }
-
-  &__signin-btn {
-    padding: 0.6rem 2rem;
-    border: 1.5px solid #1e88e5;
-    color: #1e88e5;
-    border-radius: 8px;
-    font-family: $font-main;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: rgba(30, 136, 229, 0.05);
-    }
-  }
-
-  &__hero-mobile {
-    display: none;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-    overflow: hidden;
-
-    @include mobile {
-      display: block;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      object-position: 50% 15%;
-      display: block;
-    }
-  }
-
-  &__text-content {
-    max-width: 550px;
-    margin: 0 auto;
-
-    @include mobile {
-      max-width: 100%;
-      text-align: center;
-    }
-  }
-
-  &__title {
-    font-family: $font-main;
-    font-size: 32px;
-    font-weight: 700;
-    color: #1f2937;
-    line-height: 42px;
-    letter-spacing: 0;
-    margin-bottom: 1.5rem;
-
-    @include mobile {
-      font-size: 28px;
-      line-height: normal;
-    }
-  }
-
-  &__description {
-    font-family: $font-main;
-    font-size: 16px;
-    font-weight: 500;
-    color: #1f2937;
-    margin-bottom: 2.5rem;
-    line-height: 24px;
-    letter-spacing: 0;
-  }
-
-  &__features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-
-    @include mobile {
-      flex-direction: column;
-    }
-
-    .feature-item {
+    .onboarding__content {
+      width: 60%;
+      padding: 4rem 6rem; // Increased padding for better desktop spacing
       display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.5rem 0;
-      flex: 1;
-      min-width: 200px;
+      flex-direction: column;
+      background-color: #ffffff;
+      min-height: 100%;
 
-      &__icon {
-        background-color: #ffe1c4; // Light orange background from Figma
-        color: #ff7a1a;
-        width: 44px;
-        height: 44px;
-        border-radius: 13px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
+      @include mobile {
+        width: 100%;
+        padding: 0;
+      }
 
-        img {
+      .onboarding__hero-mobile {
+        display: none;
+
+        @include mobile {
+          display: block;
           width: 100%;
-          height: 100%;
-          object-fit: contain;
+          img {
+            width: 100%;
+            height: auto;
+            display: block;
+          }
         }
       }
 
-      &__text {
-        font-family: $font-main;
-        font-weight: 500;
-        color: #000000;
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: 0;
-      }
-    }
-  }
+      .onboarding__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4rem;
+        width: 100%;
 
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 3rem;
+        @include mobile {
+          flex-direction: row; 
+          padding: 1.5rem 1.5rem 0.5rem;
+          margin-bottom: 2rem;
+          gap: 0.5rem;
+        }
 
-    .btn {
-      width: 100%;
-      padding: 1.2rem;
-      border-radius: 8px;
-      font-family: $font-main;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 24px;
-      transition: all 0.3s ease;
+        .onboarding__logo {
+          font-family: $font-logo;
+          color: #ff7a18;
+          font-size: 40.81px;
+          font-weight: 400;
+          line-height: 40.81px;
+          margin: 0;
 
-      &--primary {
-        background-color: #ff7a1a;
-        color: #ffffff;
-        border: none;
+          @include mobile {
+            width: auto;
+            text-align: left;
+          }
+        }
 
-        &:hover {
-          background-color: #e66b17;
+        .onboarding__signin-btn {
+          padding: 0.6rem 2.8rem;
+          border: 1.5px solid #1e88e5;
+          color: #1e88e5;
+          border-radius: 12px;
+          font-family: $font-main;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          transition: all 0.3s ease;
+          background: transparent;
+
+          @include mobile {
+            padding: 0.6rem 2.2rem;
+            border-radius: 10px;
+            font-size: 14px;
+          }
+
+          &:hover {
+            background-color: rgba(30, 136, 229, 0.05);
+          }
         }
       }
 
-      &--secondary {
-        border: 1.5px solid #1e88e5;
-        color: #1e88e5;
-        background: transparent;
+      .onboarding__main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        @include mobile {
+          padding: 0 1.5rem;
+        }
 
-        &:hover {
-          background-color: rgba(30, 136, 229, 0.05);
+        .onboarding__text-content {
+          width: 100%;
+          margin: 0;
+
+          @include mobile {
+            max-width: 100%;
+            text-align: left;
+          }
+
+          .onboarding__title {
+            font-family: $font-main;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1f2937;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            text-align: left;
+
+            @include mobile {
+              font-size: 32px;
+              margin-top: 1rem;
+            }
+          }
+
+          .onboarding__description {
+            font-family: $font-main;
+            font-size: 16px;
+            font-weight: 400;
+            color: #1f2937;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            text-align: left;
+            max-width: 600px;
+          }
+
+          .onboarding__features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem 1.5rem;
+            margin-bottom: 4rem;
+            width: 100%;
+
+            @include mobile {
+              flex-direction: column; // Stack vertically on mobile
+              gap: 1rem;
+              margin-bottom: 1.5rem;
+            }
+
+            .feature-item {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              padding: 0;
+              flex: 0 0 calc(50% - 0.75rem); 
+              min-width: 0;
+
+              @include mobile {
+                background-color: #f3f4f6;
+                border-radius: 12px;
+                padding: 1.2rem 1rem;
+                flex: none; 
+                width: 100%;
+                gap: 1rem;
+              }
+
+              &__icon {
+                background-color: #ffe1c4; 
+                width: 44px;
+                height: 44px;
+                border-radius: 13px;
+                display: flex;
+                flex-shrink: 0;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                  width: 24px !important;
+                  height: 24px !important;
+                  object-fit: contain;
+                }
+              }
+
+              &__text {
+                font-family: $font-main;
+                font-weight: 500;
+                color: #000000;
+                font-size: 16px;
+                line-height: normal;
+              }
+            }
+          }
+
+          .onboarding__actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 5rem;
+            width: 100%;
+
+            .btn {
+              width: 100%;
+              padding: 1.3rem;
+              border-radius: 12px;
+              font-family: $font-main;
+              font-size: 18px;
+              font-weight: 600;
+              transition: all 0.3s ease;
+              text-align: center;
+              cursor: pointer;
+
+              &--primary {
+                background-color: #ff7a1a;
+                color: #ffffff;
+                border: none;
+
+                &:hover {
+                  background-color: #e66b17;
+                }
+              }
+
+              &--secondary {
+                border: 1.5px solid #1e88e5;
+                color: #1e88e5;
+                background: transparent;
+
+                &:hover {
+                  background-color: rgba(30, 136, 229, 0.05);
+                }
+              }
+            }
+          }
         }
       }
-    }
-  }
 
-  &__footer-links {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 1.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid #f3f4f6;
+      .onboarding__footer-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid #f3f4f6;
+        width: 100%;
+        margin-top: auto;
 
-    .copyright {
-      font-family: $font-main; // Inter
-      font-weight: 500; // Medium
-      font-size: 14px;
-      line-height: 20px;
-      color: #1f2937; // Dark color from Figma for visibility on light background
-    }
+        @include mobile {
+          flex-wrap: wrap;
+          gap: 1rem;
+          border-top: 1px solid #f3f4f6;
+          width: 90%;
+          margin: 0 auto;
+        }
 
-    @include mobile {
-      justify-content: center;
-    }
+        .copyright {
+          font-family: $font-main; 
+          font-weight: 500;
+          font-size: 14px;
+          color: #71717a; // Matches design link color better
+        }
 
-    a {
-      color: #1e88e5;
-      &:hover { text-decoration: underline; }
+        a {
+          color: #1e88e5;
+          font-size: 14px;
+          text-decoration: none;
+        }
+      }
     }
   }
 }
@@ -248,20 +299,30 @@
   &__container {
     max-width: 1100px;
     margin: 0 auto;
-    display: flex;
-    justify-content: flex-start; // Start alignment for more spacing control
-    gap: 8rem; // Increased gap for a more "spaced out" but compact column feel
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+    gap: 2rem;
+    
+    @media (max-width: 1040px) {
+      grid-template-columns: 1.2fr 1fr 1.2fr 0.8fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 2rem;
+    }
   }
 
   &__brand {
-    flex: 1.5;
+    // flex: 1.5; // Removed in favor of grid
     .main-footer__logo {
       font-family: $font-logo;
       color: #ff7a18;
       font-size: 40.81px;
       font-weight: 400;
       line-height: 40.81px;
-      margin-bottom: 0.5rem; // Reduced space
+      margin-bottom: 0.5rem; 
     }
     p {
       font-family: $font-jost;
@@ -269,8 +330,7 @@
       font-size: 24px;
       line-height: 36px;
       color: #ffffff;
-      opacity: 1;
-      max-width: 280px; // Very compact as requested
+      max-width: 280px; 
       margin-bottom: 0;
     }
   }
@@ -281,11 +341,11 @@
     font-size: 24px;
     line-height: 36px;
     color: #ffffff;
-    margin-bottom: 0.5rem; // Reduced space
+    margin-bottom: 0.5rem; 
   }
 
   &__links {
-    flex: 1;
+    // flex: 1; // Removed in favor of grid
     ul li {
       margin-bottom: 1rem;
       font-family: $font-poppins;
@@ -302,7 +362,7 @@
   }
 
   &__contact {
-    flex: 1.5;
+    // flex: 1.5; // Removed in favor of grid
     p { 
       margin-bottom: 1rem; 
       font-family: $font-poppins;
@@ -314,7 +374,7 @@
   }
 
   &__social {
-    flex: 1;
+    // flex: 1; // Removed in favor of grid
     ul {
       display: flex;
       flex-direction: column;
@@ -338,7 +398,6 @@
     max-width: 1100px;
     margin: 3rem auto 0;
     padding-top: 2rem;
-    border-top: none; // Removed white divider as requested
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -347,7 +406,6 @@
       font-family: $font-poppins;
       font-weight: 400;
       font-size: 12px;
-      line-height: 20px;
       color: #ffffff;
     }
   }
@@ -369,7 +427,6 @@
     img {
       width: 24px;
       height: 24px;
-      filter: brightness(0) invert(1); // Make white
       display: block; // Better alignment
     }
 

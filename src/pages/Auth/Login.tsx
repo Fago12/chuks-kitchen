@@ -23,7 +23,7 @@ const Login: React.FC = () => {
             <SplitLayout
                 header={<Header />}
                 hero={<Hero desktopImage={HERO_IMAGE_DESKTOP} />}
-                footer={<MainFooter />}
+                footer={null}
                 showFooterLinks={false}
                 overlayTitle={OVERLAY_TITLE}
                 overlaySubtitle={OVERLAY_SUBTITLE}

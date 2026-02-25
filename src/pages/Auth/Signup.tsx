@@ -31,7 +31,6 @@ const Signup: React.FC = () => {
             return;
         }
 
-        console.log('Signup attempt for:', email);
         // Proceed with signup logic
     };
 

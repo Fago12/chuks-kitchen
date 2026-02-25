@@ -15,7 +15,6 @@ const Login: React.FC = () => {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Login attempt for:', email);
     };
 
     return (

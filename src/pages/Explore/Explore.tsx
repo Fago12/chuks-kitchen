@@ -7,6 +7,15 @@ import MenuSection from '../Home/components/MenuSection';
 import { DISHES } from '../../mock/dishes';
 import './Explore.scss';
 
+const categories = [
+    'Popular',
+    'Jollof Rice & Entrees',
+    'Swallow & Soups',
+    'Grills & sides',
+    'Beverages',
+    'Desserts'
+];
+
 const Explore: React.FC = () => {
     const [activeCategory, setActiveCategory] = useState('Popular');
 
@@ -16,17 +25,12 @@ const Explore: React.FC = () => {
         if (catName === 'Popular') return DISHES.filter(d => d.isChefSpecial);
         if (catName === 'Jollof Rice & Entrees') return DISHES.filter(d => d.category === 'Jollof');
         if (catName === 'Swallow & Soups') return DISHES.filter(d => d.category === 'Swallow');
-        return DISHES.slice(0, 3); // Fallback
+        if (catName === 'Grills & sides') return DISHES.filter(d => d.category === 'Grill' || d.category === 'Sides');
+        if (catName === 'Beverages') return DISHES.filter(d => d.category === 'Beverage');
+        if (catName === 'Desserts') return DISHES.filter(d => d.category === 'Sweet');
+        return []; // Fallback empty
     };
 
-    const categories = [
-        'Popular',
-        'Jollof Rice & Entrees',
-        'Swallow & Soups',
-        'Grills & sides',
-        'Beverages',
-        'Desserts'
-    ];
 
     React.useEffect(() => {
         const observerOptions = {
@@ -51,10 +55,10 @@ const Explore: React.FC = () => {
 
         // Observe all menu sections
         const sections = document.querySelectorAll('.explore-page__menu-section');
-        sections.forEach(section => observer.observe(section));
+        sections.forEach(section => { observer.observe(section); });
 
         return () => observer.disconnect();
-    }, [categories]);
+    }, []);
 
     const handleCategoryClick = (category: string) => {
         setActiveCategory(category);
@@ -104,7 +108,13 @@ const Explore: React.FC = () => {
                                         variant="compact"
                                     />
                                     <div className="explore-page__view-all">
-                                        <a href="*/#" className="explore-page__view-all-link">View All Categories</a>
+                                        <a
+                                            href="#"
+                                            className="explore-page__view-all-link"
+                                            onClick={(e) => e.preventDefault()}
+                                        >
+                                            View All Categories
+                                        </a>
                                     </div>
                                 </section>
                             ))}

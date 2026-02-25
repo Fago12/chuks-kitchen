@@ -4,7 +4,7 @@ export interface Dish {
     description: string;
     price: number;
     image: string;
-    category: 'Jollof' | 'Swallow' | 'Grill' | 'Sweet' | 'Sides';
+    category: 'Jollof' | 'Swallow' | 'Grill' | 'Sweet' | 'Sides' | 'Beverage';
     isChefSpecial?: boolean;
 }
 
@@ -29,11 +29,11 @@ export const DISHES: Dish[] = [
     },
     {
         id: '3',
-        name: 'Jollof Rice & Fried Chicken',
-        description: 'Our signature smoky Jollof rice served with perfectly seasoned fried chicken.',
-        price: 7500,
-        image: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&q=80&w=800',
-        category: 'Jollof',
+        name: 'Suya Platter (Large)',
+        description: 'Spicy skewered beef strips seasoned with authentic yaji spice, served with onions.',
+        price: 12000,
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=800',
+        category: 'Grill',
         isChefSpecial: true
     },
     {
@@ -47,11 +47,11 @@ export const DISHES: Dish[] = [
     },
     {
         id: '5',
-        name: 'Jollof Rice & Fried Chicken',
-        description: 'Our signature smoky Jollof rice served with perfectly seasoned fried chicken.',
-        price: 7500,
-        image: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&q=80&w=800',
-        category: 'Jollof',
+        name: 'Zesty Chapman',
+        description: 'A classic Nigerian mocktail with a blend of fruity flavors, bitters, and citrus.',
+        price: 3500,
+        image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800',
+        category: 'Beverage',
         isChefSpecial: true
     },
     {
@@ -62,6 +62,38 @@ export const DISHES: Dish[] = [
         image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800',
         category: 'Swallow',
         isChefSpecial: true
+    },
+    {
+        id: '7',
+        name: 'Grilled Croaker Fish',
+        description: 'Whole croaker fish marinated in native spices and grilled to perfection.',
+        price: 15500,
+        image: 'https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?auto=format&fit=crop&q=80&w=800',
+        category: 'Grill'
+    },
+    {
+        id: '8',
+        name: 'Fried Plantain (Dodo)',
+        description: 'Sweet, ripe plantain sliced and fried to a golden brown.',
+        price: 2500,
+        image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&q=80&w=800',
+        category: 'Sides'
+    },
+    {
+        id: '9',
+        name: 'Puff Puff (6pcs)',
+        description: 'Soft, fluffy, and sweet deep-fried dough balls, a favorite Nigerian snack.',
+        price: 3000,
+        image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&q=80&w=800',
+        category: 'Sweet'
+    },
+    {
+        id: '10',
+        name: 'Vura Palm Wine (Fresh)',
+        description: 'Naturally sweet and refreshing palm wine served chilled.',
+        price: 4500,
+        image: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&q=80&w=800',
+        category: 'Beverage'
     }
 ];
 

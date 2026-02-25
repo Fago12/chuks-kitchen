@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router';
 import Logo from '../../../components/common/Logo';
+import NavLinks from './NavLinks';
 import './HomeHeader.scss';
 
 const HomeHeader: React.FC = () => {
@@ -12,36 +13,13 @@ const HomeHeader: React.FC = () => {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
 
-    const NavLinks = () => (
-        <ul className="home-header__nav-list">
-            <li>
-                <Link to="/home" onClick={closeMenu} className={`home-header__nav-link ${isActive('/home') ? 'home-header__nav-link--active' : ''}`}>
-                    Home
-                </Link>
-            </li>
-            <li>
-                <Link to="/explore" onClick={closeMenu} className={`home-header__nav-link ${isActive('/explore') ? 'home-header__nav-link--active' : ''}`}>
-                    Explore
-                </Link>
-            </li>
-            <li>
-                <Link to="/orders" onClick={closeMenu} className={`home-header__nav-link ${isActive('/orders') ? 'home-header__nav-link--active' : ''}`}>
-                    My Orders
-                </Link>
-            </li>
-            <li>
-                <Link to="/account" onClick={closeMenu} className="home-header__nav-link">Account</Link>
-            </li>
-        </ul>
-    );
-
     return (
         <header className="home-header">
             <div className="home-header__container">
                 <Logo onClick={closeMenu} />
 
                 <nav className="home-header__nav">
-                    <NavLinks />
+                    <NavLinks closeMenu={closeMenu} isActive={isActive} />
                 </nav>
 
                 <div className="home-header__actions">
@@ -65,7 +43,7 @@ const HomeHeader: React.FC = () => {
             <div className={`home-header__mobile-drawer ${isMenuOpen ? 'home-header__mobile-drawer--open' : ''}`}>
                 <div className="home-header__mobile-content">
                     <nav className="home-header__mobile-nav">
-                        <NavLinks />
+                        <NavLinks closeMenu={closeMenu} isActive={isActive} />
                     </nav>
                     <div className="home-header__mobile-actions">
                         <Link to="/login" onClick={closeMenu} className="home-header__login-btn">

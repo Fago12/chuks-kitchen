@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import { CartProvider } from './context/CartContext';
 import Onboarding from './pages/Onboarding/Onboarding';
 import Home from './pages/Home/Home';
+import Explore from './pages/Explore/Explore';
 import Login from './pages/Auth/Login';
 import Signup from './pages/Auth/Signup';
 import Placeholder from './pages/Placeholder';
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Onboarding />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/explore" element={<Explore />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<Placeholder title="Forgot Password" />} />

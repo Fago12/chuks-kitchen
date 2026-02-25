@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+
+.explore-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F9FAFB;
+
+    &__main {
+        flex: 1;
+    }
+
+    &__content {
+        padding: 4rem 0;
+
+        @include mobile {
+            padding: 2rem 0;
+        }
+    }
+
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+
+        @include mobile {
+            padding: 0 1.5rem;
+        }
+    }
+
+    &__section-nav {
+        margin-bottom: 4rem;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+
+        @include mobile {
+            gap: 3rem;
+        }
+    }
+
+    &__section-title {
+        font-family: $font-main;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        color: #1F2937;
+
+        @include mobile {
+            font-size: 24px;
+            margin-bottom: 1.5rem;
+        }
+    }
+    &__view-all {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    &__view-all-link {
+        font-family: $font-main;
+        font-size: 14px;
+        font-weight: 500;
+        color: $primary-blue;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: darken($primary-blue, 10%);
+        }
+    }
+}

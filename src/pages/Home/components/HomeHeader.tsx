@@ -20,7 +20,9 @@ const HomeHeader: React.FC = () => {
                 </Link>
             </li>
             <li>
-                <Link to="/home#explore" onClick={closeMenu} className="home-header__nav-link">Explore</Link>
+                <Link to="/explore" onClick={closeMenu} className={`home-header__nav-link ${isActive('/explore') ? 'home-header__nav-link--active' : ''}`}>
+                    Explore
+                </Link>
             </li>
             <li>
                 <Link to="/orders" onClick={closeMenu} className={`home-header__nav-link ${isActive('/orders') ? 'home-header__nav-link--active' : ''}`}>

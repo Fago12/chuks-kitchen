@@ -13,6 +13,7 @@
     &:hover {
         transform: translateY(-8px);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
     }
 
     &__image-wrapper {
@@ -87,19 +88,22 @@
     }
 
     &--compact {
-        // Desktop Explore page: Maintain card aesthetics (bg, shadow, radius)
-        // just like the home page, but with the compact button.
-        
         @include mobile {
-            background-color: $pure-white; // Make card visible
+            background-color: $pure-white;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             border-radius: 12px;
             flex-direction: row;
             gap: 1.5rem;
             align-items: flex-start;
-            padding: 1.5rem; // Add padding to all sides
+            padding: 1.5rem;
             margin-bottom: 1rem;
-            border-bottom: none; // Using shadow/bg instead of border-bottom
+            border-bottom: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            }
 
             .dish-card__image-wrapper {
                 width: 100px;
@@ -131,44 +135,6 @@
 
             .dish-card__price {
                 font-size: 14px;
-            }
-        }
-
-        .dish-card__add-btn {
-            width: 36px; // Increased size for better "space" around the icon
-            height: 36px;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            position: relative;
-            background-color: $primary-orange;
-            color: $pure-white;
-            box-shadow: 0 2px 8px rgba($primary-orange, 0.3);
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 12px; // Adjusted for better internal spacing
-                height: 2px;
-                background-color: currentcolor;
-                border-radius: 1px;
-            }
-
-            &::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 2px;
-                height: 12px;
-                background-color: currentcolor;
-                border-radius: 1px;
             }
         }
     }

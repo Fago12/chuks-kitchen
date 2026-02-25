@@ -6,9 +6,10 @@ import './MenuSection.scss';
 interface MenuSectionProps {
     dishes: Dish[];
     loading: boolean;
+    variant?: 'default' | 'compact';
 }
 
-const MenuSection: React.FC<MenuSectionProps> = ({ dishes, loading }) => {
+const MenuSection: React.FC<MenuSectionProps> = ({ dishes, loading, variant = 'default' }) => {
     if (loading) {
         return (
             <div className="menu-section__loading">
@@ -21,7 +22,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({ dishes, loading }) => {
     return (
         <div className="menu-grid">
             {dishes.map(dish => (
-                <DishCard key={dish.id} dish={dish} />
+                <DishCard key={dish.id} dish={dish} variant={variant} />
             ))}
         </div>
     );

@@ -5,9 +5,10 @@ import './DishCard.scss';
 
 interface DishCardProps {
     dish: Dish;
+    variant?: 'default' | 'compact';
 }
 
-const DishCard: React.FC<DishCardProps> = ({ dish }) => {
+const DishCard: React.FC<DishCardProps> = ({ dish, variant = 'default' }) => {
     const { addToCart } = useCart();
 
     const formatCurrency = (amount: number) => {
@@ -19,7 +20,7 @@ const DishCard: React.FC<DishCardProps> = ({ dish }) => {
     };
 
     return (
-        <div className="dish-card">
+        <div className={`dish-card ${variant === 'compact' ? 'dish-card--compact' : ''}`}>
             <div className="dish-card__image-wrapper">
                 <img src={dish.image} alt={dish.name} className="dish-card__image" />
             </div>
@@ -33,8 +34,9 @@ const DishCard: React.FC<DishCardProps> = ({ dish }) => {
                     <button
                         className="dish-card__add-btn"
                         onClick={() => addToCart(dish)}
+                        aria-label="Add to cart"
                     >
-                        Add to cart
+                        {variant !== 'compact' && 'Add to cart'}
                     </button>
                 </div>
             </div>

@@ -1,0 +1,87 @@
+@use '../../../styles/variables' as *;
+
+.explore-hero {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center; // Vertically centered
+    padding: 0; // Removed bottom padding
+
+    @include mobile {
+        height: 300px;
+    }
+
+    &__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: #333; // Fallback
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 2;
+    }
+
+    &__container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 10;
+
+        @include mobile {
+            padding: 0 1.5rem;
+        }
+    }
+
+    &__content {
+        color: $pure-white;
+        text-align: left;
+    }
+
+    &__title {
+        color: $pure-white;
+        font-family: $font-main;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 61px;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+        @include mobile {
+            font-size: 32px;
+            line-height: 42px;
+        }
+    }
+
+    &__subtitle {
+        font-family: $font-main;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 34px;
+        opacity: 1;
+
+        @include mobile {
+            font-size: 18px;
+            line-height: 26px;
+        }
+    }
+}

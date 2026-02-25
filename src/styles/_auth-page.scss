@@ -53,7 +53,7 @@
     }
 
     // Link styles (e.g., signup-link, login-link)
-    [class*="__signup-link"], [class*="__login-link"] {
+    &__signup-link, &__login-link {
         text-align: center;
         font-family: $font-main;
         font-size: 14px;

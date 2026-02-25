@@ -12,12 +12,10 @@ $primary-blue: #1E88E5;
 $soft-blue: #64B5F6;
 $light-blue: #E3F2FD;
 $dark-blue: #0D47A1;
-
 $color-brand-orange: $primary-orange;
 $color-brand-blue: $primary-blue;
 $color-brand-blue-dark: #1565C0;
 $color-brand-blue-light: #F0F7FF;
-
 $pure-white: #FFFFFF;
 $soft-gray: #F3F4F6;
 $charcoal-black: #1F2937;
@@ -46,7 +44,7 @@ $tablet: 768px;
 $desktop: 1024px;
 
 @mixin mobile {
-  @media (max-width: #{$tablet - 1px}) {
+  @media (max-width: #{$mobile}) {
     @content;
   }
 }

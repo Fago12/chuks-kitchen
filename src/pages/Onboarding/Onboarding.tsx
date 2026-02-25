@@ -1,13 +1,11 @@
-import React from 'react';
 import SplitLayout from '../../components/layout/SplitLayout';
 import Hero from './components/Hero';
 import Header from './components/Header';
 import FooterLinks from './components/FooterLinks';
 import MainContent from './components/MainContent';
 import MainFooter from './components/MainFooter';
+import { HERO_IMAGE_DESKTOP } from '../Auth/constants';
 import './Onboarding.scss';
-
-const HERO_IMAGE_DESKTOP = '/onboarding-hero.jpg';
 
 const Onboarding: React.FC = () => {
     return (

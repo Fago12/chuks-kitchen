@@ -1,7 +1,7 @@
 @use '../../styles/variables' as *;
 
 .onboarding {
-  .split-layout__main {
+  .onboarding__main {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
       font-family: $font-main;
       font-size: 44px;
       font-weight: 700;
-      color: #1f2937;
+      color: $charcoal-black;
       line-height: 1.1;
       letter-spacing: -0.01em;
       margin-bottom: 1.2rem;
@@ -38,7 +38,7 @@
       font-family: $font-main;
       font-size: 16px;
       font-weight: 400;
-      color: #4b5563;
+      color: $dark-gray-text;
       margin-bottom: 2.5rem;
       line-height: 1.5;
       text-align: left;
@@ -74,7 +74,7 @@
         min-width: 0;
 
         @include mobile {
-          background-color: #f3f4f6;
+          background-color: $soft-gray;
           border-radius: 12px;
           padding: 1.2rem 1rem;
           flex: none; 
@@ -129,7 +129,7 @@
 
         &--primary {
           background-color: $primary-orange;
-          color: #ffffff;
+          color: $pure-white;
           border: none;
 
           &:hover {
@@ -138,12 +138,12 @@
         }
 
         &--secondary {
-          border: 1.5px solid #1e88e5;
-          color: #1e88e5;
+          border: 1.5px solid $color-brand-blue;
+          color: $color-brand-blue;
           background: transparent;
 
           &:hover {
-            background-color: rgba(30, 136, 229, 0.05);
+            background-color: rgba($color-brand-blue, 0.05);
           }
         }
       }

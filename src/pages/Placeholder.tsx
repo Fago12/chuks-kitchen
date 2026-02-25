@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SimplePageShell from '../components/layout/SimplePageShell';
 
 interface PlaceholderProps {
     title: string;
@@ -7,11 +8,11 @@ interface PlaceholderProps {
 
 const Placeholder: React.FC<PlaceholderProps> = ({ title }) => {
     return (
-        <div style={{ padding: '50px', textAlign: 'center', fontFamily: 'Inter, sans-serif' }}>
+        <SimplePageShell>
             <h1>{title}</h1>
-            <p>This is a placeholder for the {title} page.</p>
-            <Link to="/" style={{ color: '#ff7a18', fontWeight: 'bold' }}>Go Back Home</Link>
-        </div>
+            <p>This page is currently under development. Please check back later!</p>
+            <Link to="/">Go back to Home</Link>
+        </SimplePageShell>
     );
 };
 

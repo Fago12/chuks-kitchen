@@ -9,6 +9,7 @@
 
 .login-page {
   @include auth-page-styles;
+
   max-width: 440px;
 
   &__password-wrapper {

@@ -1,0 +1,73 @@
+@use 'variables' as *;
+
+@mixin auth-page-styles {
+    margin: 3.5rem 0;
+
+    @include mobile {
+        margin: 2rem 1.5rem;
+    }
+
+    &__content {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-family: $font-main;
+        font-size: 32px;
+        font-weight: 700;
+        color: #000000;
+        line-height: normal;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    &__submit-btn {
+        background-color: $auth-primary;
+        color: $pure-white;
+        border: none;
+        border-radius: 12px;
+        padding: 1rem;
+        font-family: $font-main;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+
+        &:hover {
+            background-color: $auth-primary-hover;
+        }
+
+        &:disabled {
+            background-color: $muted-gray-text;
+            cursor: not-allowed;
+        }
+    }
+
+    // Link styles (e.g., signup-link, login-link)
+    [class*="__signup-link"], [class*="__login-link"] {
+        text-align: center;
+        font-family: $font-main;
+        font-size: 14px;
+        color: $auth-muted;
+        margin-top: 2rem;
+
+        a {
+            color: $auth-link;
+            text-decoration: none;
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

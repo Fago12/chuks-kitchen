@@ -93,8 +93,8 @@
           justify-content: center;
 
           img {
-            width: 24px !important;
-            height: 24px !important;
+            width: 24px;
+            height: 24px;
             object-fit: contain;
           }
         }
@@ -116,7 +116,7 @@
       margin-bottom: 5rem;
       width: 100%;
 
-      .btn {
+      .onboarding__btn {
         width: 100%;
         padding: 1.3rem;
         border-radius: 12px;
@@ -128,7 +128,7 @@
         cursor: pointer;
 
         &--primary {
-          background-color: #ff7a1a;
+          background-color: $primary-orange;
           color: #ffffff;
           border: none;
 
@@ -183,10 +183,10 @@
     // flex: 1.5; // Removed in favor of grid
     .main-footer__logo {
       font-family: $font-logo;
-      color: #ff7a18;
-      font-size: 40.81px;
+      color: $color-brand-orange;
+      font-size: $font-size-logo;
       font-weight: 400;
-      line-height: 40.81px;
+      line-height: $font-size-logo;
       margin-bottom: 0.5rem; 
     }
     p {

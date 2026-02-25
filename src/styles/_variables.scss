@@ -1,4 +1,3 @@
-// Color Palette
 $primary-orange: #FF7A18;
 $soft-orange: #FFB066;
 $light-orange: #FFE1C4;
@@ -14,11 +13,25 @@ $soft-blue: #64B5F6;
 $light-blue: #E3F2FD;
 $dark-blue: #0D47A1;
 
+$color-brand-orange: $primary-orange;
+$color-brand-blue: $primary-blue;
+$color-brand-blue-dark: #1565C0;
+$color-brand-blue-light: #F0F7FF;
+
 $pure-white: #FFFFFF;
 $soft-gray: #F3F4F6;
 $charcoal-black: #1F2937;
 $dark-gray-text: #4B5563;
 $muted-gray-text: #9CA3AF;
+
+// Semantic Auth Colors
+$auth-primary: $primary-orange;
+$auth-primary-hover: #E66B17;
+$auth-link: $primary-blue;
+$auth-muted: #6B7280;
+
+// Sizes
+$font-size-logo: 41px;
 
 // Typography
 $font-main: 'Inter', sans-serif;

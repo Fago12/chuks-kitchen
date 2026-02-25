@@ -1,42 +1,49 @@
 import React from 'react';
 import './SplitLayout.scss';
-import Header from '../../pages/Onboarding/components/Header';
-import Hero from '../../pages/Onboarding/components/Hero';
-import FooterLinks from '../../pages/Onboarding/components/FooterLinks';
 
 interface SplitLayoutProps {
     children: React.ReactNode;
-    desktopHeroImage: string;
-    mobileHeroImage: string;
+    header: React.ReactNode;
+    hero: React.ReactNode;
+    footer?: React.ReactNode;
     showFooterLinks?: boolean;
     overlayTitle?: string;
     overlaySubtitle?: string;
     hideMobileHero?: boolean;
+    contentClassName?: string;
 }
 
 const SplitLayout: React.FC<SplitLayoutProps> = ({
     children,
-    desktopHeroImage,
-    mobileHeroImage,
+    header,
+    hero,
+    footer,
     showFooterLinks = true,
     overlayTitle,
     overlaySubtitle,
-    hideMobileHero = false
+    hideMobileHero = false,
+    contentClassName
 }) => {
+    const renderOverlay = (isMobile = false) => {
+        if (!overlayTitle && !overlaySubtitle) return null;
+
+        return (
+            <div className={`split-layout__overlay ${isMobile ? 'split-layout__overlay--mobile' : ''}`}>
+                <div className="split-layout__overlay-content">
+                    {overlayTitle && <h2 className="split-layout__overlay-title">{overlayTitle}</h2>}
+                    {overlaySubtitle && <p className="split-layout__overlay-subtitle">{overlaySubtitle}</p>}
+                </div>
+            </div>
+        );
+    };
+
     return (
         <div className="split-layout">
             <div className="split-layout__container">
                 {/* Left Side (Desktop Hero) */}
                 <div className="split-layout__hero-desktop">
-                    <Hero imageSrc={desktopHeroImage} />
-                    {(overlayTitle || overlaySubtitle) && (
-                        <div className="split-layout__overlay">
-                            <div className="split-layout__overlay-content">
-                                {overlayTitle && <h1 className="split-layout__overlay-title">{overlayTitle}</h1>}
-                                {overlaySubtitle && <p className="split-layout__overlay-subtitle">{overlaySubtitle}</p>}
-                            </div>
-                        </div>
-                    )}
+                    {hero}
+                    {renderOverlay()}
                 </div>
 
                 {/* Content Side */}
@@ -44,25 +51,18 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({
                     {/* Mobile Hero (only visible on mobile) */}
                     {!hideMobileHero && (
                         <div className="split-layout__hero-mobile">
-                            <Hero imageSrc={mobileHeroImage} isMobile />
-                            {(overlayTitle || overlaySubtitle) && (
-                                <div className="split-layout__overlay split-layout__overlay--mobile">
-                                    <div className="split-layout__overlay-content">
-                                        {overlayTitle && <h1 className="split-layout__overlay-title">{overlayTitle}</h1>}
-                                        {overlaySubtitle && <p className="split-layout__overlay-subtitle">{overlaySubtitle}</p>}
-                                    </div>
-                                </div>
-                            )}
+                            {hero}
+                            {renderOverlay(true)}
                         </div>
                     )}
 
-                    <Header />
+                    {header}
 
-                    <main className="split-layout__main">
+                    <main className={`split-layout__main ${contentClassName || ''}`}>
                         {children}
                     </main>
 
-                    {showFooterLinks && <FooterLinks />}
+                    {showFooterLinks && footer}
                 </div>
             </div>
         </div>

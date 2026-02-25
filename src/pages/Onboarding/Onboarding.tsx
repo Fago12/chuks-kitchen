@@ -1,20 +1,26 @@
 import React from 'react';
 import SplitLayout from '../../components/layout/SplitLayout';
+import Hero from './components/Hero';
+import Header from './components/Header';
+import FooterLinks from './components/FooterLinks';
 import MainContent from './components/MainContent';
 import MainFooter from './components/MainFooter';
 import './Onboarding.scss';
 
 const HERO_IMAGE_DESKTOP = '/onboarding-hero.jpg';
-const HERO_IMAGE_MOBILE = '/onboarding-hero-mobile.png';
 
 const Onboarding: React.FC = () => {
     return (
-        <div className="onboarding">
+        <div className="onboarding-wrapper">
             <SplitLayout
-                desktopHeroImage={HERO_IMAGE_DESKTOP}
-                mobileHeroImage={HERO_IMAGE_MOBILE}
+                header={<Header />}
+                hero={<Hero imageSrc={HERO_IMAGE_DESKTOP} />}
+                footer={<FooterLinks />}
+                contentClassName="onboarding__main"
             >
-                <MainContent />
+                <div className="onboarding">
+                    <MainContent />
+                </div>
             </SplitLayout>
 
             {/* Site-wide Footer */}

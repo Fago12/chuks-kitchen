@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import SplitLayout from '../../components/layout/SplitLayout';
 import AuthInput from '../../components/auth/AuthInput';
 import SocialLogin from '../../components/auth/SocialLogin';
+import Hero from '../Onboarding/components/Hero';
+import Header from '../Onboarding/components/Header';
 import MainFooter from '../Onboarding/components/MainFooter';
+import { HERO_IMAGE_DESKTOP, OVERLAY_TITLE, OVERLAY_SUBTITLE } from './constants';
 import './Login.scss';
-
-const HERO_IMAGE_DESKTOP = '/onboarding-hero.jpg';
-const HERO_IMAGE_MOBILE = '/onboarding-hero-mobile.png';
-
-const OVERLAY_TITLE = "Chuks Kitchen";
-const OVERLAY_SUBTITLE = "Your journey to delicious, authentic Nigerian meals starts here. Sign up or log in to order your favorites today!";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -18,14 +15,15 @@ const Login: React.FC = () => {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Login attempt:', { email, password });
+        console.log('Login attempt for:', email);
     };
 
     return (
         <div className="login-wrapper">
             <SplitLayout
-                desktopHeroImage={HERO_IMAGE_DESKTOP}
-                mobileHeroImage={HERO_IMAGE_MOBILE}
+                header={<Header />}
+                hero={<Hero imageSrc={HERO_IMAGE_DESKTOP} />}
+                footer={<MainFooter />}
                 showFooterLinks={false}
                 overlayTitle={OVERLAY_TITLE}
                 overlaySubtitle={OVERLAY_SUBTITLE}
@@ -33,7 +31,7 @@ const Login: React.FC = () => {
             >
                 <div className="login-page">
                     <div className="login-page__content">
-                        <h2 className="login-page__title">Login your Account</h2>
+                        <h2 className="login-page__title">Log in to Your Account</h2>
 
                         <form className="login-page__form" onSubmit={handleLogin}>
                             <AuthInput

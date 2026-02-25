@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use '../../styles/auth-page' as *;
 
 .signup-wrapper {
   display: flex;
@@ -7,35 +8,8 @@
 }
 
 .signup-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
+  @include auth-page-styles;
   max-width: 440px;
-  margin: 0 auto 2rem;
-
-  &__content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__title {
-    font-family: $font-main;
-    font-size: 24px;
-    font-weight: 500;
-    color: #000000;
-    line-height: 34px;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
 
   &__terms {
     display: flex;
@@ -48,57 +22,20 @@
       height: 18px;
       margin-top: 0.1rem;
       cursor: pointer;
-      accent-color: #ff7a1a;
+      accent-color: $auth-primary;
     }
 
     label {
       font-family: $font-main;
       font-size: 14px;
-      color: #6b7280;
+      color: $auth-muted;
       line-height: 1.4;
 
       a {
-        color: #1e88e5;
+        color: $auth-link;
         font-weight: 500;
         text-decoration: none;
         &:hover { text-decoration: underline; }
-      }
-    }
-  }
-
-  &__submit-btn {
-    width: 100%;
-    height: 54px;
-    background-color: #ff7a1a;
-    color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    font-family: $font-main;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-bottom: 2rem;
-
-    &:hover {
-      background-color: #e66b17;
-    }
-  }
-
-  &__login-link {
-    font-family: $font-main;
-    font-size: 14px;
-    color: #6b7280;
-    text-align: center;
-    margin-top: 2rem;
-
-    a {
-      color: #1e88e5;
-      font-weight: 600;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
       }
     }
   }

@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import SplitLayout from '../../components/layout/SplitLayout';
 import AuthInput from '../../components/auth/AuthInput';
 import SocialLogin from '../../components/auth/SocialLogin';
+import Hero from '../Onboarding/components/Hero';
+import Header from '../Onboarding/components/Header';
 import MainFooter from '../Onboarding/components/MainFooter';
+import { HERO_IMAGE_DESKTOP, OVERLAY_TITLE, OVERLAY_SUBTITLE } from './constants';
 import './Signup.scss';
-
-const HERO_IMAGE_DESKTOP = '/onboarding-hero.jpg';
-const HERO_IMAGE_MOBILE = '/onboarding-hero-mobile.png';
-
-const OVERLAY_TITLE = "Chuks Kitchen";
-const OVERLAY_SUBTITLE = "Your journey to delicious, authentic Nigerian meals starts here. Sign up or log in to order your favorites today!";
 
 const Signup: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -18,17 +15,32 @@ const Signup: React.FC = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [agreeTerms, setAgreeTerms] = useState(false);
+    const [error, setError] = useState('');
 
     const handleSignup = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Signup attempt:', { email, phone, password, agreeTerms });
+        setError('');
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+
+        if (!agreeTerms) {
+            setError('You must agree to the Terms & Conditions');
+            return;
+        }
+
+        console.log('Signup attempt for:', email);
+        // Proceed with signup logic
     };
 
     return (
         <div className="signup-wrapper">
             <SplitLayout
-                desktopHeroImage={HERO_IMAGE_DESKTOP}
-                mobileHeroImage={HERO_IMAGE_MOBILE}
+                header={<Header />}
+                hero={<Hero imageSrc={HERO_IMAGE_DESKTOP} />}
+                footer={<MainFooter />}
                 showFooterLinks={false}
                 overlayTitle={OVERLAY_TITLE}
                 overlaySubtitle={OVERLAY_SUBTITLE}
@@ -39,6 +51,7 @@ const Signup: React.FC = () => {
                         <h2 className="signup-page__title">Create Your Account</h2>
 
                         <form className="signup-page__form" onSubmit={handleSignup}>
+                            {error && <p className="signup-page__error" style={{ color: 'red', marginBottom: '1rem', textAlign: 'center' }}>{error}</p>}
                             <AuthInput
                                 label="Email"
                                 type="email"
@@ -95,7 +108,7 @@ const Signup: React.FC = () => {
                                 </label>
                             </div>
 
-                            <button type="submit" className="signup-page__submit-btn">
+                            <button type="submit" className="signup-page__submit-btn" disabled={!agreeTerms}>
                                 Continue
                             </button>
                         </form>

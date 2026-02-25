@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import { Link } from 'react-router';
 
 const FeatureItem: React.FC<{ icon: string; text: string }> = ({ icon, text }) => (
     <div className='feature-item'>
@@ -25,7 +25,7 @@ const MainContent: React.FC = () => {
             </div>
 
             <div className='onboarding__actions'>
-                <button className='onboarding__btn onboarding__btn--primary'>Start Your Order</button>
+                <Link to="/home" className='onboarding__btn onboarding__btn--primary'>Start Your Order</Link>
                 <button className='onboarding__btn onboarding__btn--secondary'>Learn More About Us</button>
             </div>
         </div>

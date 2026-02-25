@@ -1,0 +1,54 @@
+@use '../../../styles/variables' as *;
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+
+    @include mobile {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+    }
+
+    // Tablet support
+    @media (min-width: 768px) and (max-width: 1023px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.category-card {
+    background-color: $pure-white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    &__image-wrapper {
+        width: 100%;
+        height: 180px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__footer {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    &__name {
+        font-family: $font-main; // Inter
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 34px;
+        color: #1F2937;
+    }
+}

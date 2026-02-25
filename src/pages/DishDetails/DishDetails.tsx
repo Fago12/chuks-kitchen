@@ -46,7 +46,7 @@ const DishDetails: React.FC = () => {
     const totalPrice = (dish.price + (selectedProtein?.price || 0) + selectedExtras.reduce((acc, e) => acc + e.price, 0)) * quantity;
 
     const handleAddToCart = () => {
-        addToCart(dish, selectedProtein, selectedExtras);
+        addToCart(dish, selectedProtein, selectedExtras, specialInstructions);
         // Optionally navigate to cart or show success
         alert('Added to cart!');
     };

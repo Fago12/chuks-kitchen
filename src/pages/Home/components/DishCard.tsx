@@ -31,6 +31,13 @@ const DishCard: React.FC<DishCardProps> = ({ dish, variant = 'default' }) => {
         <div
             className={`dish-card ${variant === 'compact' ? 'dish-card--compact' : ''}`}
             onClick={() => navigate(`/dish/${dish.id}`)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    navigate(`/dish/${dish.id}`);
+                }
+            }}
         >
             <div className="dish-card__image-wrapper">
                 <img src={dish.image} alt={dish.name} className="dish-card__image" />

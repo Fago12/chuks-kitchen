@@ -8,16 +8,18 @@ export interface SelectedOption {
 }
 
 export interface CartItem extends Dish {
+    cartLineId: string; // Unique ID for this specific entry in the cart
     quantity: number;
     selectedProtein?: SelectedOption;
     selectedExtras?: SelectedOption[];
+    specialInstructions?: string;
 }
 
 interface CartContextType {
     cartItems: CartItem[];
-    addToCart: (dish: Dish, protein?: SelectedOption, extras?: SelectedOption[]) => void;
-    removeFromCart: (cartItemId: string) => void;
-    updateQuantity: (cartItemId: string, quantity: number) => void;
+    addToCart: (dish: Dish, protein?: SelectedOption, extras?: SelectedOption[], instructions?: string) => void;
+    removeFromCart: (cartLineId: string) => void;
+    updateQuantity: (cartLineId: string, quantity: number) => void;
     clearCart: () => void;
     cartCount: number;
     cartTotal: number;
@@ -35,15 +37,23 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem('chuks-cart', JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const addToCart = (dish: Dish, protein?: SelectedOption, extras: SelectedOption[] = []) => {
+    const addToCart = (dish: Dish, protein?: SelectedOption, extras: SelectedOption[] = [], instructions: string = '') => {
         setCartItems(prev => {
-            // Check if an item with EXACT same customizations already exists
+            // Check if an item with EXACT same customizations and instructions already exists
             const existingIndex = prev.findIndex(item => {
                 const sameDish = item.id === dish.id;
                 const sameProtein = item.selectedProtein?.id === protein?.id;
-                const sameExtras = item.selectedExtras?.length === extras.length &&
-                    item.selectedExtras.every(e => extras.some(ext => ext.id === e.id));
-                return sameDish && sameProtein && sameExtras;
+
+                // Normalize both sides to arrays for robust comparison
+                const itemExtras = item.selectedExtras || [];
+                const currentExtras = extras || [];
+
+                const sameExtras = itemExtras.length === currentExtras.length &&
+                    itemExtras.every(e => currentExtras.some(ext => ext.id === e.id));
+
+                const sameInstructions = (item.specialInstructions || '') === instructions;
+
+                return sameDish && sameProtein && sameExtras && sameInstructions;
             });
 
             if (existingIndex > -1) {
@@ -58,36 +68,28 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             return [...prev, {
                 ...dish,
-                price: finalPrice, // Store the price with options for easier total calculation
+                cartLineId: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+                price: finalPrice,
                 quantity: 1,
                 selectedProtein: protein,
-                selectedExtras: extras
+                selectedExtras: extras,
+                specialInstructions: instructions
             }];
         });
     };
 
-    const removeFromCart = (index: number | string) => {
-        setCartItems(prev => {
-            if (typeof index === 'number') {
-                return prev.filter((_, idx) => idx !== index);
-            }
-            // Fallback for ID-based removal (legacy support)
-            return prev.filter(item => item.id !== index);
-        });
+    const removeFromCart = (cartLineId: string) => {
+        setCartItems(prev => prev.filter(item => item.cartLineId !== cartLineId));
     };
 
-    const updateQuantity = (index: number | string, quantity: number) => {
+    const updateQuantity = (cartLineId: string, quantity: number) => {
         if (quantity < 1) {
-            removeFromCart(index);
+            removeFromCart(cartLineId);
             return;
         }
-        setCartItems(prev => {
-            if (typeof index === 'number') {
-                return prev.map((item, idx) => (idx === index ? { ...item, quantity } : item));
-            }
-            // Fallback for ID-based update
-            return prev.map(item => (item.id === index ? { ...item, quantity } : item));
-        });
+        setCartItems(prev => prev.map(item =>
+            item.cartLineId === cartLineId ? { ...item, quantity } : item
+        ));
     };
 
     const clearCart = () => setCartItems([]);

@@ -18,6 +18,7 @@ const IconButton: React.FC<IconButtonProps> = ({
 }) => {
     return (
         <button
+            type="button"
             className={`icon-button icon-button--${icon} icon-button--${size} ${className}`}
             onClick={onClick}
             aria-label={ariaLabel}

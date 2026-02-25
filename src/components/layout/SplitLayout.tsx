@@ -48,14 +48,13 @@ const SplitLayout: React.FC<SplitLayoutProps> = ({
 
                 {/* Content Side */}
                 <div className="split-layout__content">
-                    {/* Mobile Hero (only visible on mobile) */}
+                    {/* Mobile Hero (only visible on mobile via CSS) */}
                     {!hideMobileHero && (
-                        <div className="split-layout__hero-mobile">
+                        <div className="split-layout__hero-mobile-wrapper">
                             {hero}
                             {renderOverlay(true)}
                         </div>
                     )}
-
                     {header}
 
                     <main className={`split-layout__main ${contentClassName || ''}`}>

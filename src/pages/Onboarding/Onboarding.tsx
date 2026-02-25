@@ -4,7 +4,7 @@ import Header from './components/Header';
 import FooterLinks from './components/FooterLinks';
 import MainContent from './components/MainContent';
 import MainFooter from './components/MainFooter';
-import { HERO_IMAGE_DESKTOP } from '../Auth/constants';
+import { HERO_IMAGE_DESKTOP, HERO_IMAGE_MOBILE } from '../Auth/constants';
 import './Onboarding.scss';
 
 const Onboarding: React.FC = () => {
@@ -12,7 +12,7 @@ const Onboarding: React.FC = () => {
         <div className="onboarding-wrapper">
             <SplitLayout
                 header={<Header />}
-                hero={<Hero imageSrc={HERO_IMAGE_DESKTOP} />}
+                hero={<Hero desktopImage={HERO_IMAGE_DESKTOP} mobileImage={HERO_IMAGE_MOBILE} />}
                 footer={<FooterLinks />}
                 contentClassName="onboarding__main"
             >

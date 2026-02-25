@@ -22,7 +22,7 @@ const Login: React.FC = () => {
         <div className="login-wrapper">
             <SplitLayout
                 header={<Header />}
-                hero={<Hero imageSrc={HERO_IMAGE_DESKTOP} />}
+                hero={<Hero desktopImage={HERO_IMAGE_DESKTOP} />}
                 footer={<MainFooter />}
                 showFooterLinks={false}
                 overlayTitle={OVERLAY_TITLE}
@@ -31,7 +31,7 @@ const Login: React.FC = () => {
             >
                 <div className="login-page">
                     <div className="login-page__content">
-                        <h2 className="login-page__title">Log in to Your Account</h2>
+                        <h2 className="login-page__title">Login your Account</h2>
 
                         <form className="login-page__form" onSubmit={handleLogin}>
                             <AuthInput

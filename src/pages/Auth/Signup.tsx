@@ -39,7 +39,7 @@ const Signup: React.FC = () => {
         <div className="signup-wrapper">
             <SplitLayout
                 header={<Header />}
-                hero={<Hero imageSrc={HERO_IMAGE_DESKTOP} />}
+                hero={<Hero desktopImage={HERO_IMAGE_DESKTOP} />}
                 footer={<MainFooter />}
                 showFooterLinks={false}
                 overlayTitle={OVERLAY_TITLE}

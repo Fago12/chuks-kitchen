@@ -1,16 +1,22 @@
 ﻿import React from 'react';
 
 interface HeroProps {
-    imageSrc: string;
-    isMobile?: boolean;
+    desktopImage: string;
+    mobileImage?: string;
 }
 
-const Hero: React.FC<HeroProps> = ({ imageSrc, isMobile }) => {
-    const className = isMobile ? 'onboarding__hero-mobile' : 'onboarding__hero-desktop';
+const Hero: React.FC<HeroProps> = ({ desktopImage, mobileImage }) => {
     return (
-        <div className={className}>
-            <img src={imageSrc} alt='Nigerian meal' />
-        </div>
+        <>
+            <div className="onboarding__hero-desktop">
+                <img src={desktopImage} alt='Nigerian meal desktop' />
+            </div>
+            {mobileImage && (
+                <div className="onboarding__hero-mobile">
+                    <img src={mobileImage} alt='Nigerian meal mobile' />
+                </div>
+            )}
+        </>
     );
 };
 

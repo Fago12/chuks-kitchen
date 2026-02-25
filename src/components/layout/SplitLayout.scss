@@ -15,7 +15,9 @@
 
   &__hero-desktop {
     width: 40%;
-    position: relative; 
+    position: sticky; 
+    top: 0;
+    height: 100vh;
     
     @include mobile {
       display: none;
@@ -77,10 +79,12 @@
 
   &__content {
     width: 60%;
-    padding: 3rem 5rem; 
+    padding: 2.5rem 2rem 3rem; 
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: $pure-white;
     min-height: 100%;
     position: relative;
 
@@ -90,18 +94,23 @@
     }
   }
 
-  &__hero-mobile {
+  &__hero-mobile-wrapper {
     display: none;
     position: relative;
+    width: 100%;
 
     @include mobile {
       display: block;
-      width: 100%;
       padding: 0 1.5rem; 
-      
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+
+      .onboarding__hero-desktop {
+        display: none;
+      }
+
       .onboarding__hero-mobile {
         width: 100%;
-        margin: 1rem 0;
         
         img {
           width: 100%;
@@ -117,6 +126,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex: 1;
     
     @include mobile {

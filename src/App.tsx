@@ -7,6 +7,7 @@ import Login from './pages/Auth/Login';
 import Signup from './pages/Auth/Signup';
 import Placeholder from './pages/Placeholder';
 import DishDetails from './pages/DishDetails/DishDetails';
+import Cart from './pages/Cart/Cart';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/dish/:id" element={<DishDetails />} />
+            <Route path="/orders" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<Placeholder title="Forgot Password" />} />

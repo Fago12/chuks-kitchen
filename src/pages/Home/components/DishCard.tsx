@@ -35,6 +35,7 @@ const DishCard: React.FC<DishCardProps> = ({ dish, variant = 'default' }) => {
             tabIndex={0}
             onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
                     navigate(`/dish/${dish.id}`);
                 }
             }}

@@ -118,7 +118,7 @@
         color: #000000;
         margin-bottom: 1rem;
         line-height: 42px;
-        letter-spacing: 0%;
+        letter-spacing: normal;
     }
 
     &__price {
@@ -127,7 +127,7 @@
         color: vars.$primary-orange; // #FF7A18
         margin-bottom: 1.5rem;
         line-height: 34px;
-        letter-spacing: 0%;
+        letter-spacing: normal;
     }
 
     &__description {
@@ -172,7 +172,7 @@
             color: #000000;
             margin-bottom: 1.5rem;
             line-height: 34px;
-            letter-spacing: 0%;
+            letter-spacing: normal;
         }
     }
 

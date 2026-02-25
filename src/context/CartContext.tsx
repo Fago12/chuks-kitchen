@@ -68,7 +68,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             return [...prev, {
                 ...dish,
-                cartLineId: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+                cartLineId: `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
                 price: finalPrice,
                 quantity: 1,
                 selectedProtein: protein,

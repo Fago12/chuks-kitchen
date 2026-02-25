@@ -24,7 +24,20 @@ const DishDetails: React.FC = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+
+        // Re-initialize states when dish changes
+        if (dish) {
+            setSelectedProtein(dish.proteins?.find(p => p.isDefault) || dish.proteins?.[0]);
+            setSelectedExtras([]);
+            setQuantity(1);
+            setSpecialInstructions('');
+        } else {
+            setSelectedProtein(undefined);
+            setSelectedExtras([]);
+            setQuantity(1);
+            setSpecialInstructions('');
+        }
+    }, [dish]);
 
     if (!dish) {
         return (
@@ -148,7 +161,7 @@ const DishDetails: React.FC = () => {
                                 <h2 className="dish-details__section-title">Special Instructions</h2>
                                 <textarea
                                     className="dish-details__instructions"
-                                    placeholder="E.g no onion, food is too spicy, food is too hot hhhhhhhhhhh food is tasty"
+                                    placeholder="E.g no onion, less spicy, extra sauce…"
                                     value={specialInstructions}
                                     onChange={(e) => setSpecialInstructions(e.target.value)}
                                 />

@@ -25,8 +25,8 @@ const MainContent: React.FC = () => {
             </div>
 
             <div className='onboarding__actions'>
-                <button className='btn btn--primary'>Start Your Order</button>
-                <button className='btn btn--secondary'>Learn More About Us</button>
+                <button className='onboarding__btn onboarding__btn--primary'>Start Your Order</button>
+                <button className='onboarding__btn onboarding__btn--secondary'>Learn More About Us</button>
             </div>
         </div>
     );

@@ -1,35 +1,25 @@
-import React from 'react';
-import './Onboarding.scss';
-import Header from './components/Header';
+import SplitLayout from '../../components/layout/SplitLayout';
 import Hero from './components/Hero';
-import MainContent from './components/MainContent';
+import Header from './components/Header';
 import FooterLinks from './components/FooterLinks';
+import MainContent from './components/MainContent';
 import MainFooter from './components/MainFooter';
-
-const HERO_IMAGE_DESKTOP = '/onboarding-hero.jpg';
-const HERO_IMAGE_MOBILE = '/onboarding-hero-mobile.png';
+import { HERO_IMAGE_DESKTOP, HERO_IMAGE_MOBILE } from '../Auth/constants';
+import './Onboarding.scss';
 
 const Onboarding: React.FC = () => {
     return (
-        <div className="onboarding">
-            <div className="onboarding__container">
-                {/* Left Side (Desktop Hero) */}
-                <Hero imageSrc={HERO_IMAGE_DESKTOP} />
-
-                {/* Content Side */}
-                <div className="onboarding__content">
-                    {/* Mobile Hero (only visible on mobile) */}
-                    <Hero imageSrc={HERO_IMAGE_MOBILE} isMobile />
-
-                    <Header />
-
-                    <main className="onboarding__main">
-                        <MainContent />
-                    </main>
-
-                    <FooterLinks />
+        <div className="onboarding-wrapper">
+            <SplitLayout
+                header={<Header />}
+                hero={<Hero desktopImage={HERO_IMAGE_DESKTOP} mobileImage={HERO_IMAGE_MOBILE} />}
+                footer={<FooterLinks />}
+                contentClassName="onboarding__main"
+            >
+                <div className="onboarding">
+                    <MainContent />
                 </div>
-            </div>
+            </SplitLayout>
 
             {/* Site-wide Footer */}
             <MainFooter />

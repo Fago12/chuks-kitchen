@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+@use '../../styles/auth-page' as *;
+
+.signup-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.signup-page {
+  @include auth-page-styles;
+
+  max-width: 440px;
+
+  &__terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 0.1rem;
+      cursor: pointer;
+      accent-color: $auth-primary;
+    }
+
+    label {
+      font-family: $font-main;
+      font-size: 14px;
+      color: $auth-muted;
+      line-height: 1.4;
+
+      a {
+        color: $auth-link;
+        font-weight: 500;
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+      }
+    }
+  }
+}

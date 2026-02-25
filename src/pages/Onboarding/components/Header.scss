@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+
+.onboarding__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  width: 100%;
+
+  &--auth {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0; 
+  }
+
+  @include mobile {
+    padding: 0 1.5rem 0.5rem;
+    margin-bottom: 1.5rem; 
+    position: relative; 
+    flex-direction: column-reverse; 
+    align-items: center;
+    gap: 1.5rem; 
+
+    .onboarding__signin-btn {
+      align-self: flex-end; 
+    }
+
+    .onboarding__logo {
+      margin: 0;
+    }
+
+    &.onboarding__header--auth {
+      padding-top: 2rem;
+      margin-bottom: 0;
+      flex-direction: row; 
+      justify-content: center; 
+    }
+  }
+
+  .onboarding__logo {
+    font-family: $font-logo;
+    color: $color-brand-orange;
+    font-size: $font-size-logo;
+    font-weight: 400;
+    line-height: $font-size-logo;
+    margin: 0;
+  }
+
+  .onboarding__signin-btn {
+    padding: 0.6rem 2rem;
+    border: 1.5px solid $color-brand-blue;
+    color: $color-brand-blue;
+    border-radius: 8px; 
+    font-family: $font-main;
+    font-weight: 500;
+    font-size: 14px; 
+    line-height: 20px;
+    transition: all 0.2s ease;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile {
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    &:hover {
+      background-color: $color-brand-blue-light;
+      border-color: $color-brand-blue-dark;
+    }
+  }
+}

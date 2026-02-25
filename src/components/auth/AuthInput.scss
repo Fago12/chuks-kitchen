@@ -1,0 +1,82 @@
+@use '../../styles/variables' as *;
+
+.auth-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+
+  &__label {
+    font-family: $font-main;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+
+    &:focus-within {
+      border-color: #ff7a1a;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 2px rgba(255, 122, 26, 0.1);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    color: #9ca3af;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__field {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 1rem;
+    font-family: $font-main;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+  }
+
+  &__toggle {
+    background: none;
+    border: none;
+    padding: 0 1rem;
+    color: #9ca3af;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #6b7280;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

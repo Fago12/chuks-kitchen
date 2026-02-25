@@ -1,0 +1,136 @@
+@use '../../styles/variables' as *;
+
+.split-layout {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    flex: 1;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__hero-desktop {
+    width: 40%;
+    position: sticky; 
+    top: 0;
+    height: 100vh;
+    
+    @include mobile {
+      display: none;
+    }
+
+    .onboarding__hero-desktop {
+      height: 100%;
+      width: 100%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: 50% 15%; 
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(234, 116, 27, 0.7), rgba(234, 116, 27, 0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 10;
+
+    &--mobile {
+      padding: 1.5rem;
+    }
+
+    &-content {
+      text-align: center;
+      color: #ffffff;
+      max-width: 400px;
+    }
+
+    &-title {
+      font-family: $font-main;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 61px;
+      color: #ffffff; 
+    }
+
+    &-subtitle {
+      font-family: $font-main;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 34px;
+    }
+  }
+
+  &__content {
+    width: 60%;
+    padding: 2.5rem 2rem 3rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: $pure-white;
+    min-height: 100%;
+    position: relative;
+
+    @include mobile {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  &__hero-mobile-wrapper {
+    display: none;
+    position: relative;
+    width: 100%;
+
+    @include mobile {
+      display: block;
+      padding: 0 1.5rem; 
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+
+      .onboarding__hero-desktop {
+        display: none;
+      }
+
+      .onboarding__hero-mobile {
+        width: 100%;
+        
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  &__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    
+    @include mobile {
+      padding: 0 1.5rem;
+    }
+  }
+}

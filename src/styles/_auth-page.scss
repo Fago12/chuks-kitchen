@@ -1,0 +1,83 @@
+@use 'variables' as *;
+
+@mixin auth-page-styles {
+    margin: 0 auto 3rem;
+
+    @include mobile {
+        margin: 0 auto 6rem;
+        padding: 0 1.5rem;
+    }
+
+    &__content {
+        width: 100%;
+        max-width: 440px;
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-family: $font-main;
+        font-size: 32px;
+        font-weight: 700;
+        color: #000000;
+        line-height: 1.1;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        text-align: center;
+        width: 100%;
+
+        @include mobile {
+            font-size: 24px;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    &__submit-btn {
+        background-color: $auth-primary;
+        color: $pure-white;
+        border: none;
+        border-radius: 12px;
+        padding: 1rem;
+        font-family: $font-main;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+
+        &:hover {
+            background-color: $auth-primary-hover;
+        }
+
+        &:disabled {
+            background-color: $muted-gray-text;
+            cursor: not-allowed;
+        }
+    }
+
+    // Link styles (e.g., signup-link, login-link)
+    &__signup-link, &__login-link {
+        text-align: center;
+        font-family: $font-main;
+        font-size: 14px;
+        color: $auth-muted;
+        margin-top: 2rem;
+
+        a {
+            color: $auth-link;
+            text-decoration: none;
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -1,285 +1,151 @@
 @use '../../styles/variables' as *;
 
-.onboarding {
-  min-height: 100vh;
+.onboarding__main {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  
+  @include mobile {
+    padding: 0 1.5rem;
+  }
+}
 
-  &__container {
-    display: flex;
-    flex: 1;
+.onboarding {
 
-    @include mobile {
-      flex-direction: column;
-    }
+  &__text-content {
+    width: 100%;
+    margin: 0;
 
-    .onboarding__hero-desktop {
-      width: 40%;
-      
+    .onboarding__title {
+      font-family: $font-main;
+      font-size: 44px;
+      font-weight: 700;
+      color: $charcoal-black;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+      text-align: left;
+
       @include mobile {
-        display: none;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 15%; 
+        font-size: 32px;
+        margin-top: 0.5rem;
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
       }
     }
 
-    .onboarding__content {
-      width: 60%;
-      padding: 4rem 6rem; // Increased padding for better desktop spacing
+    .onboarding__description {
+      font-family: $font-main;
+      font-size: 16px;
+      font-weight: 400;
+      color: $dark-gray-text;
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+      text-align: left;
+      max-width: 580px;
+
+      @include mobile {
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    .onboarding__features {
       display: flex;
-      flex-direction: column;
-      background-color: #ffffff;
-      min-height: 100%;
+      flex-wrap: wrap;
+      gap: 2rem 1.5rem;
+      margin-bottom: 4rem;
+      width: 100%;
 
       @include mobile {
-        width: 100%;
-        padding: 0;
+        flex-direction: column;
+        align-items: center; 
+        gap: 1rem;
+        margin-bottom: 1.5rem;
       }
 
-      .onboarding__hero-mobile {
-        display: none;
-
-        @include mobile {
-          display: block;
-          width: 100%;
-          img {
-            width: 100%;
-            height: auto;
-            display: block;
-          }
-        }
-      }
-
-      .onboarding__header {
+      .feature-item {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        margin-bottom: 4rem;
-        width: 100%;
+        gap: 1rem;
+        padding: 0;
+        flex: 0 0 calc(50% - 0.75rem); 
+        min-width: 0;
 
         @include mobile {
-          flex-direction: row; 
-          padding: 1.5rem 1.5rem 0.5rem;
-          margin-bottom: 2rem;
-          gap: 0.5rem;
+          background-color: $soft-gray;
+          border-radius: 12px;
+          padding: 1.2rem 1rem;
+          flex: none; 
+          width: 100%;
+          gap: 1rem;
         }
 
-        .onboarding__logo {
-          font-family: $font-logo;
-          color: #ff7a18;
-          font-size: 40.81px;
-          font-weight: 400;
-          line-height: 40.81px;
-          margin: 0;
+        &__icon {
+          background-color: #fff1e6; 
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          display: flex;
+          flex-shrink: 0;
+          align-items: center;
+          justify-content: center;
 
-          @include mobile {
-            width: auto;
-            text-align: left;
+          img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
           }
         }
 
-        .onboarding__signin-btn {
-          padding: 0.6rem 2.8rem;
-          border: 1.5px solid #1e88e5;
-          color: #1e88e5;
-          border-radius: 12px;
+        &__text {
           font-family: $font-main;
           font-weight: 500;
+          color: #000000;
           font-size: 16px;
-          line-height: 24px;
-          transition: all 0.3s ease;
-          background: transparent;
+          line-height: normal;
+        }
+      }
+    }
 
-          @include mobile {
-            padding: 0.6rem 2.2rem;
-            border-radius: 10px;
-            font-size: 14px;
-          }
+    .onboarding__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 5rem;
+      width: 100%;
+
+      .onboarding__btn {
+        width: 100%;
+        padding: 1.3rem;
+        border-radius: 12px;
+        font-family: $font-main;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+        cursor: pointer;
+
+        &--primary {
+          background-color: $primary-orange;
+          color: $pure-white;
+          border: none;
 
           &:hover {
-            background-color: rgba(30, 136, 229, 0.05);
+            background-color: #e66b17;
           }
         }
-      }
 
-      .onboarding__main {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        
-        @include mobile {
-          padding: 0 1.5rem;
-        }
+        &--secondary {
+          border: 1.5px solid $color-brand-blue;
+          color: $color-brand-blue;
+          background: transparent;
 
-        .onboarding__text-content {
-          width: 100%;
-          margin: 0;
-
-          @include mobile {
-            max-width: 100%;
-            text-align: left;
+          &:hover {
+            background-color: rgba($color-brand-blue, 0.05);
           }
-
-          .onboarding__title {
-            font-family: $font-main;
-            font-size: 42px;
-            font-weight: 700;
-            color: #1f2937;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            text-align: left;
-
-            @include mobile {
-              font-size: 32px;
-              margin-top: 1rem;
-            }
-          }
-
-          .onboarding__description {
-            font-family: $font-main;
-            font-size: 16px;
-            font-weight: 400;
-            color: #1f2937;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-            text-align: left;
-            max-width: 600px;
-          }
-
-          .onboarding__features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem 1.5rem;
-            margin-bottom: 4rem;
-            width: 100%;
-
-            @include mobile {
-              flex-direction: column; // Stack vertically on mobile
-              gap: 1rem;
-              margin-bottom: 1.5rem;
-            }
-
-            .feature-item {
-              display: flex;
-              align-items: center;
-              gap: 1rem;
-              padding: 0;
-              flex: 0 0 calc(50% - 0.75rem); 
-              min-width: 0;
-
-              @include mobile {
-                background-color: #f3f4f6;
-                border-radius: 12px;
-                padding: 1.2rem 1rem;
-                flex: none; 
-                width: 100%;
-                gap: 1rem;
-              }
-
-              &__icon {
-                background-color: #ffe1c4; 
-                width: 44px;
-                height: 44px;
-                border-radius: 13px;
-                display: flex;
-                flex-shrink: 0;
-                align-items: center;
-                justify-content: center;
-
-                img {
-                  width: 24px !important;
-                  height: 24px !important;
-                  object-fit: contain;
-                }
-              }
-
-              &__text {
-                font-family: $font-main;
-                font-weight: 500;
-                color: #000000;
-                font-size: 16px;
-                line-height: normal;
-              }
-            }
-          }
-
-          .onboarding__actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin-bottom: 5rem;
-            width: 100%;
-
-            .btn {
-              width: 100%;
-              padding: 1.3rem;
-              border-radius: 12px;
-              font-family: $font-main;
-              font-size: 18px;
-              font-weight: 600;
-              transition: all 0.3s ease;
-              text-align: center;
-              cursor: pointer;
-
-              &--primary {
-                background-color: #ff7a1a;
-                color: #ffffff;
-                border: none;
-
-                &:hover {
-                  background-color: #e66b17;
-                }
-              }
-
-              &--secondary {
-                border: 1.5px solid #1e88e5;
-                color: #1e88e5;
-                background: transparent;
-
-                &:hover {
-                  background-color: rgba(30, 136, 229, 0.05);
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .onboarding__footer-links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-        padding-top: 2rem;
-        border-top: 1px solid #f3f4f6;
-        width: 100%;
-        margin-top: auto;
-
-        @include mobile {
-          flex-wrap: wrap;
-          gap: 1rem;
-          border-top: 1px solid #f3f4f6;
-          width: 90%;
-          margin: 0 auto;
-        }
-
-        .copyright {
-          font-family: $font-main; 
-          font-weight: 500;
-          font-size: 14px;
-          color: #71717a; // Matches design link color better
-        }
-
-        a {
-          color: #1e88e5;
-          font-size: 14px;
-          text-decoration: none;
         }
       }
     }
@@ -318,10 +184,10 @@
     // flex: 1.5; // Removed in favor of grid
     .main-footer__logo {
       font-family: $font-logo;
-      color: #ff7a18;
-      font-size: 40.81px;
+      color: $color-brand-orange;
+      font-size: $font-size-logo;
       font-weight: 400;
-      line-height: 40.81px;
+      line-height: $font-size-logo;
       margin-bottom: 0.5rem; 
     }
     p {

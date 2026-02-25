@@ -46,7 +46,7 @@ const MainFooter: React.FC = () => {
 
             <div className='main-footer__bottom'>
                 <Copyright
-                    companyName="Lift Media"
+                    companyName="Chuks Kitchen"
                     className="main-footer__copyright"
                     showAllRights={true}
                 />

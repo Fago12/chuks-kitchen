@@ -1,0 +1,157 @@
+@use '../../../styles/variables' as *;
+
+.home-hero {
+    position: relative;
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; // To allow search bar to spill out
+
+    @include mobile {
+        height: 500px;
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 2;
+    }
+
+    &__content {
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 2rem;
+        text-align: left;
+        color: $pure-white;
+        z-index: 10;
+        // Search bar is now outside content
+
+        @include mobile {
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+    }
+
+    &__title {
+        font-family: $font-main; // Switched to Inter as per Figma
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        max-width: 600px;
+        line-height: 61px; // Exact Figma spec
+        color: #FFFFFF;
+
+        @include mobile {
+            font-size: 32px;
+            line-height: 1.2;
+            margin: 0 auto 1rem;
+        }
+    }
+
+    &__subtitle {
+        font-family: $font-main;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        line-height: 42px; // Exact Figma spec
+        color: #FFFFFF;
+
+        @include mobile {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+    }
+
+    &__cta {
+        padding: 1rem 2.5rem;
+        background-color: $primary-orange;
+        color: #FFFFFF;
+        font-family: $font-main;
+        font-size: 16px; // Exact Figma spec
+        line-height: 24px; // Exact Figma spec
+        font-weight: 600; // Semi Bold
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+
+        &:hover {
+            background-color: darken($primary-orange, 5%);
+            transform: translateY(-2px);
+        }
+    }
+
+    &__search {
+        position: absolute;
+        bottom: -32px; // Half of height (64/2)
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 800px;
+        width: 90%;
+        z-index: 100;
+
+        @include mobile {
+            width: 92%;
+            bottom: -28px;
+        }
+    }
+
+    &__search-input-wrapper {
+        position: relative;
+        width: 100%;
+        background-color: $pure-white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    &__search-icon {
+        width: 24px;
+        height: 24px;
+        color: #757575;
+        margin-right: 1.5rem;
+    }
+
+    &__search-input {
+        width: 100%;
+        height: 64px;
+        border: none;
+        outline: none;
+        font-family: $font-main;
+        font-size: 18px;
+        color: $charcoal-black;
+
+        &::placeholder {
+            color: #9E9E9E;
+        }
+
+        @include mobile {
+            height: 56px;
+            font-size: 16px;
+        }
+    }
+}

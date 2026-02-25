@@ -1,0 +1,21 @@
+@use '../../styles/variables' as *;
+
+.shared-logo {
+    display: block;
+    width: fit-content;
+
+    &__text {
+        font-family: $font-logo;
+        color: $color-brand-orange;
+        font-size: $font-size-logo;
+        font-weight: 400;
+        line-height: $font-size-logo;
+        margin: 0;
+        transition: opacity 0.2s ease;
+        text-decoration: none;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

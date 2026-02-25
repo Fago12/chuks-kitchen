@@ -37,13 +37,9 @@
     }
   }
 
-  .onboarding__logo {
-    font-family: $font-logo;
-    color: $color-brand-orange;
-    font-size: $font-size-logo;
-    font-weight: 400;
-    line-height: $font-size-logo;
-    margin: 0;
+  // Logo overrides if necessary, but preferred to use .shared-logo
+  .shared-logo {
+    // Shared styles already applied, but we can add header-specific spacing here
   }
 
   .onboarding__signin-btn {

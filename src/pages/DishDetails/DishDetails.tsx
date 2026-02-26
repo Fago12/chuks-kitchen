@@ -22,22 +22,21 @@ const DishDetails: React.FC = () => {
     const [quantity, setQuantity] = useState(1);
     const [specialInstructions, setSpecialInstructions] = useState('');
 
+    // Standard React pattern to reset state when a prop changes (id)
+    // This happens during render to avoid useEffect/set-state-in-effect issues
+    const [prevDishId, setPrevDishId] = useState(id);
+
+    if (id !== prevDishId) {
+        setPrevDishId(id);
+        setSelectedProtein(dish?.proteins?.find(p => p.isDefault) || dish?.proteins?.[0]);
+        setSelectedExtras([]);
+        setQuantity(1);
+        setSpecialInstructions('');
+    }
+
     useEffect(() => {
         window.scrollTo(0, 0);
-
-        // Re-initialize states when dish changes
-        if (dish) {
-            setSelectedProtein(dish.proteins?.find(p => p.isDefault) || dish.proteins?.[0]);
-            setSelectedExtras([]);
-            setQuantity(1);
-            setSpecialInstructions('');
-        } else {
-            setSelectedProtein(undefined);
-            setSelectedExtras([]);
-            setQuantity(1);
-            setSpecialInstructions('');
-        }
-    }, [dish]);
+    }, [id]); // Scroll to top when the dish changes
 
     if (!dish) {
         return (
@@ -59,9 +58,7 @@ const DishDetails: React.FC = () => {
     const totalPrice = (dish.price + (selectedProtein?.price || 0) + selectedExtras.reduce((acc, e) => acc + e.price, 0)) * quantity;
 
     const handleAddToCart = () => {
-        addToCart(dish, selectedProtein, selectedExtras, specialInstructions);
-        // Optionally navigate to cart or show success
-        alert('Added to cart!');
+        addToCart(dish, selectedProtein, selectedExtras, specialInstructions, quantity);
     };
 
     return (

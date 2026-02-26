@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import type { Dish } from '../mock/dishes';
 
 export interface SelectedOption {
@@ -17,7 +18,7 @@ export interface CartItem extends Dish {
 
 interface CartContextType {
     cartItems: CartItem[];
-    addToCart: (dish: Dish, protein?: SelectedOption, extras?: SelectedOption[], instructions?: string) => void;
+    addToCart: (dish: Dish, protein?: SelectedOption, extras?: SelectedOption[], instructions?: string, quantity?: number) => void;
     removeFromCart: (cartLineId: string) => void;
     updateQuantity: (cartLineId: string, quantity: number) => void;
     clearCart: () => void;
@@ -37,12 +38,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.setItem('chuks-cart', JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const addToCart = (dish: Dish, protein?: SelectedOption, extras: SelectedOption[] = [], instructions: string = '') => {
+    const addToCart = (dish: Dish, protein?: SelectedOption, extras: SelectedOption[] = [], instructions: string = '', quantity: number = 1) => {
         setCartItems(prev => {
+            // If protein is not provided, try to find the default protein in the dish object
+            // This ensures that adding from a card (where protein isn't selected) 
+            // matches adding from details (where it defaults to the default protein)
+            const effectiveProtein = protein || dish.proteins?.find(p => p.isDefault) || dish.proteins?.[0];
+
             // Check if an item with EXACT same customizations and instructions already exists
             const existingIndex = prev.findIndex(item => {
                 const sameDish = item.id === dish.id;
-                const sameProtein = item.selectedProtein?.id === protein?.id;
+                const sameProtein = item.selectedProtein?.id === effectiveProtein?.id;
 
                 // Normalize both sides to arrays for robust comparison
                 const itemExtras = item.selectedExtras || [];
@@ -58,24 +64,27 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             if (existingIndex > -1) {
                 return prev.map((item, idx) =>
-                    idx === existingIndex ? { ...item, quantity: item.quantity + 1 } : item
+                    idx === existingIndex ? { ...item, quantity: item.quantity + quantity } : item
                 );
             }
 
             // Calculate base dish price + options
-            const optionsPrice = (protein?.price || 0) + extras.reduce((acc, e) => acc + e.price, 0);
+            const optionsPrice = (effectiveProtein?.price || 0) + extras.reduce((acc, e) => acc + e.price, 0);
             const finalPrice = dish.price + optionsPrice;
 
             return [...prev, {
                 ...dish,
                 cartLineId: `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
                 price: finalPrice,
-                quantity: 1,
-                selectedProtein: protein,
+                quantity: quantity,
+                selectedProtein: effectiveProtein,
                 selectedExtras: extras,
                 specialInstructions: instructions
             }];
         });
+
+        // Unified UI feedback
+        toast.success('Added to cart!');
     };
 
     const removeFromCart = (cartLineId: string) => {

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import type { Dish } from '../mock/dishes';
 
 export interface SelectedOption {
@@ -83,7 +84,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         });
 
         // Unified UI feedback
-        alert('Added to cart!');
+        toast.success('Added to cart!');
     };
 
     const removeFromCart = (cartLineId: string) => {

@@ -37,10 +37,11 @@ const MainFooter: React.FC = () => {
 
                 <div className='main-footer__social'>
                     <ul>
-                        <li><Link to='/facebook'>Facebook</Link></li>
-                        <li><Link to='/twitter'>Twitter</Link></li>
-                        <li><Link to='/linkedin'>LinkedIn</Link></li>
-                        <li><Link to='/instagram'>Instagram</Link></li>
+                        <li><a href="https://github.com/Fago12" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                        <li><a href="https://x.com/ayoyemi_stephen" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                        <li><a href="https://www.linkedin.com/in/ayoyemi-fagoroye/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/_ayo.ye.mi/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+
                     </ul>
                 </div>
             </div>

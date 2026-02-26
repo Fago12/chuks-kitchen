@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# Chuks Kitchen - Authentic West African Cuisine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chuks Kitchen is a modern, responsive web application for exploring and ordering authentic West African (specifically Nigerian) dishes. The app features a rich menu, detailed dish information, and a seamless cart management experience.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm or yarn
 
-## React Compiler
+### Installation
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Development Server
+Run the application locally:
+```bash
+npm run dev
+```
+The app will be available at `http://localhost:5173`.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Production Build
+Create an optimized production build:
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠 Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Core**: React 19 (Hooks, Context API)
+- **Routing**: React Router 7
+- **Styling**: SCSS (Sass) with BEM methodology
+- **Icons**: Inline SVG icons
+- **State Management**: React Context API (Cart functionality)
+- **Build Tool**: Vite 7
+- **Notifications**: React Hot Toast
+- **Language**: TypeScript
+
+---
+
+## 🏗 Architecture & Design Patterns
+
+### Component Architecture
+The app follows a modular component-based architecture. Pages are composed of smaller, reusable components located in `src/pages/[PageName]/components`.
+
+### Service Layer
+Data fetching is abstracted into a service layer (`src/services/api/dishes.ts`). This allows for easy swapping of mock data with real API endpoints in the future.
+
+### State Management (Cart)
+The application State for the shopping cart is centralized in `src/context/CartContext.tsx`. This provider manages:
+- Adding/removing items
+- Customization persistence (Proteins, Extras)
+- Quantity updates
+- Total calculations
+- LocalStorage persistence for session recovery
+
+### SCSS Architecture
+The styling system is built for scalability and performance:
+- **`src/styles/_variables.scss`**: Centralized design tokens (Colors, Typography, Breakpoints).
+- **BEM (Block Element Modifier)**: Used consistently (e.g., `.cart-item__image--large`) to ensure styling isolation.
+- **Responsive Design**: Mobile-first approach using dedicated mixins for breakpoints.
+
+---
+
+## 📦 Data Management
+
+### Dish Data Structure
+Dishes are defined as TypeScript interfaces (`src/mock/dishes.ts`) with support for:
+- Unique IDs and Categories
+- Chef's Special flags
+- Customization options (Proteins and Extras) with individual pricing
+- Descriptive tags (Spicy, Vegan, Allergy warnings)
+
+### Data Fetching
+Fetching logic mimics asynchronous API calls using a `delay` helper in the service layer. This ensures the UI handles loading states correctly from the start.
+
+---
+
+## 🔄 User Flow & Status
+
+> [!IMPORTANT]
+> **Authentication Status**: The current authentication flow (Login/Signup) is a UI placeholder. User authentication logic is not yet connected to a backend.
+
+### Standard Entry Flow
+1. **Onboarding**: Start at the landing page.
+2. **Accessing Dishes**: Click the **"Start your order"** button or navigate directly to `/home`.
+3. **Exploration**: Browse categories or Chef's Specials.
+4. **Ordering**: Select a dish to view details, choose customizations, and add to cart.
+5. **Cart Management**: Review your order on the "My Orders" page.
+
+---
+
+## 📂 Directory Structure
+
+```text
+src/
+├── assets/         # Static assets
+├── components/     # Global reusable UI components
+├── context/        # React Context providers (Cart)
+├── mock/           # Mock data and TypeScript interfaces
+├── pages/          # Page-level components and their sub-components
+├── services/       # API abstraction layer
+└── styles/         # Global styles and variables
 ```
+
+---
+
+## 📄 License
+
+Private - All rights reserved.

@@ -53,24 +53,20 @@ const Cart: React.FC = () => {
 
                                                 <div className="cart-item__controls">
                                                     <button
-                                                        className="cart-item__btn cart-item__btn--plus"
-                                                        onClick={() => updateQuantity(item.cartLineId, item.quantity + 1)}
-                                                        aria-label="Increase quantity"
-                                                    >
-                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                                                            <path d="M12 5v14M5 12h14" />
-                                                        </svg>
-                                                    </button>
-
-                                                    <span className="cart-item__quantity">{item.quantity}</span>
-
-                                                    <button
                                                         className="cart-item__btn cart-item__btn--minus"
                                                         onClick={() => updateQuantity(item.cartLineId, item.quantity - 1)}
                                                         aria-label="Decrease quantity"
                                                     >
                                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                                             <path d="M5 12h14" />
+                                                        </svg>
+                                                    </button>
+
+                                                    <span className="cart-item__quantity">{item.quantity}</span>
+
+                                                    <button className="cart-item__btn cart-item__btn--plus" onClick={() => updateQuantity(item.cartLineId, item.quantity + 1)} aria-label="Increase quantity">
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                                            <path d="M12 5v14M5 12h14" />
                                                         </svg>
                                                     </button>
                                                 </div>
@@ -102,10 +98,12 @@ const Cart: React.FC = () => {
                             )}
                         </div>
 
-                        <Link to="/explore" className="cart-add-more">
-                            <span className="cart-add-more__plus">+</span>
-                            Add more items from Chuks Kitchen
-                        </Link>
+                        {cartItems.length > 0 && (
+                            <Link to="/explore" className="cart-add-more">
+                                <span className="cart-add-more__plus">+</span>
+                                Add more items from Chuks Kitchen
+                            </Link>
+                        )}
                     </div>
                 </div>
             </main>
